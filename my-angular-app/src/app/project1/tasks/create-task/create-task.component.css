@@ -1,0 +1,29 @@
+.focus:focus{
+    border-bottom:2px solid rgb(65, 33, 246);
+}
+
+.focus{
+    border:none;
+    outline: none; 
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#description{
+    width: 85%;
+    margin-left: 15%;
+}
+
+.focus:hover{
+    background-color:#f1f3f4;
+}
+
+#title{
+    width: 85%;
+    margin-left: 15%;
+}
+#checkbox{
+    width: 15%;
+    outline: none;
+    margin: 0px;
+}

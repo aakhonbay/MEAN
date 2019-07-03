@@ -1,0 +1,23 @@
+<ul>
+  <h4>YOUR GROUPS</h4>
+  <li *ngFor="let group of groups" style="list-style-type: none;">
+      <a routerLink="/project1/{{group._id}}">
+        <div style="background-image: url('https://secure.meetupstatic.com/photos/event/d/2/d/1/600_461693969.jpeg'); width: 200px; height: 200px;">
+          <h3 style="color:white">{{group.title}}</h3>
+          <span style="color:white">{{ group.users.length }} Friends</span>
+        </div>
+      </a>
+    </li>
+</ul>
+
+<ul>
+  <h4>SUGGESTED GROUPS</h4>
+  <li *ngFor="let group of groups" style="list-style-type: none;">
+      <a routerLink="/project1/{{group._id}}">
+        <div style="background-image: url('https://secure.meetupstatic.com/photos/event/d/2/d/1/600_461693969.jpeg'); width: 200px; height: 200px;">
+          <h3 style="color:white">{{group.title}}</h3>
+          <span style="color:white">{{ group.users.length }} Friends</span>
+        </div>
+      </a>
+    </li>
+</ul>

@@ -1,0 +1,17 @@
+<div style="padding: 20px 25px 0 25px">
+    <div
+      class="list-group-item" 
+      (click)="onCompleted($event);"
+      *ngFor="let obj of obj.objectives; i as index">{{obj}}
+    </div>
+  </div>
+  <div style="padding: 20px 25px 0 25px">
+    <label 
+      for="addObjective"
+      style="padding-right: 5px">Add Objective: </label>
+    <input type="text" #addObjective name="addObjective">
+    <button 
+      class="btn btn-primary" 
+      (click)="onAddObjective()"
+      [disabled]="!addObjective">Add Objective</button>
+  </div>

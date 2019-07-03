@@ -1,0 +1,23 @@
+<form [formGroup]="form" (submit)="onCreateSubmit()">
+
+  <!-- Username Input -->
+  <div class="form-group" style="display:flex;">
+    <!-- <input 
+      id="checkbox"  
+      type="checkbox" name="completed" autocomplete="off" placeholder="*Username" formControlName="completed"
+      />   -->
+    <input #title 
+      id="title" class="focus" autofocus type="text" name="title" autocomplete="off" placeholder="Task title" formControlName="title"/>
+  </div>
+
+  <div class="form-group">
+        <input id="description" class="focus" type="text" name="description" autocomplete="off" placeholder="Add details" formControlName="description"/>
+  </div>
+
+    <div class="form-group">
+        
+    </div>  
+  <!-- Submit Input -->
+  <input type="submit" class="btn btn-primary" value="Submit" />
+
+</form>

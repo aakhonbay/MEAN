@@ -1,0 +1,17 @@
+<nav>
+    <ul style="display:flex;list-style-type: none;">
+        <li>
+            <a style="padding-right:10px" *ngIf="_authService.loggedIn()" routerLink="/home" style="margin: 0px 16px"><img width="20px" height="20px" src="https://cdn.onlinewebfonts.com/svg/img_350131.png" alt=""></a> 
+        </li>
+        <li>
+            <a style="padding-right:10px" routerLink="/project1/tasks" *ngIf="_authService.loggedIn()">Tasks</a>
+        </li>
+        <li *ngIf="!_authService.loggedIn()">
+            <a style="padding-right:10px"  routerLink="/login">Login</a>
+            <a style="padding-right:10px" routerLink="/register">Register</a>             
+        </li>
+    </ul>
+</nav>
+
+
+<router-outlet></router-outlet>

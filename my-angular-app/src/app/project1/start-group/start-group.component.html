@@ -1,0 +1,11 @@
+<form [formGroup]="startForm" (ngSubmit)="onStartFormSubmit()">
+  Location: <input type="text" formControlName="location">
+  Interests: <input type="text" formControlName="interests">
+  Name: <input type="text" formControlName="name">
+  Description: <input type="text" formControlName="description">
+  Agreement: <input type="text" formControlName="agreement">
+  <button [disabled]="!startForm.valid">Submit</button>
+</form>
+
+
+

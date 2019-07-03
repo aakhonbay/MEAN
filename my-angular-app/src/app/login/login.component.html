@@ -1,0 +1,5 @@
+<form [formGroup]="loginFormGroup" (ngSubmit)="onLogin()">
+  Email:<input type="text" formControlName="email">
+  Password:<input type="password" formControlName="password">
+  <button [disabled]="!loginFormGroup.valid">Login</button>
+</form>

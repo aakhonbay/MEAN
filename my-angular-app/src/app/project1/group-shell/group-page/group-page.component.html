@@ -1,0 +1,101 @@
+<div style="padding: 20px;display: flex">
+  <div style="border-radius:20px; 
+    background-image:url('https://secure.meetupstatic.com/photos/event/d/2/d/1/600_461693969.jpeg'); width:650px; height: 350px">
+  </div>
+  <div style="padding-left: 40px">
+    <h1>{{groupAPI.title}}</h1> <br>
+    <span>{{groupAPI.location}} </span> <br>
+    <span>{{groupAPI.users.length}} . Public group</span> <br>
+    <span>{{groupAPI.users[0].email}}</span> <br>
+    <span style="font-weight: bold">Share on social media</span> <br>
+  </div>
+</div>
+<nav>
+  <ul style='list-style-type: none;display: flex'>
+    <li style="padding-right:10px">
+      <a routerLink="about">About</a>  
+    </li>
+    <li style="padding-right:10px">
+      <a routerLink="events">Events</a>  
+    </li>
+    <li style="padding-right:10px">
+      <a routerLink="members">Members</a>
+    </li>
+    <li style="padding-right:10px">
+      <a routerLink="photos">Photos</a>
+    </li>
+    <li style="padding-right:10px">
+      <a routerLink="discussions">Discussions</a>
+    </li>
+    <li style="padding-right:10px">
+      <a routerLink="more">More</a>
+    </li>
+    <li style="padding-right:10px">
+      <a routerLink="more" style="padding-right:10px">Join this group</a>
+      <a routerLink="more" style="padding-right:10px">You're a member</a>
+    </li>
+    <li style="padding-right:10px">
+      <a routerLink="schedule" style="padding-right:10px">Create event</a>
+    </li>
+  </ul>
+
+
+</nav>
+<div style='display: flex'>
+  <div>
+      <h3>What we're about</h3>
+      <p>
+        {{groupAPI.description}}
+      </p>
+      
+      <h3>Upcoming events ({{events.length > 5 ? '5+' : events.length}})</h3>
+      
+      <div>
+        <ul style='list-style-type: none;'>
+          <li *ngFor="let event of events">
+            <a routerLink="events/{{event.name}}">
+              {{event.name}}
+            </a>
+          </li>
+        </ul>
+      </div>
+      
+      <h3>Photos {{events.length}}</h3>
+      
+      <h3>Discussion {{events.length}}</h3>
+  </div>
+  <div style="padding-left: 50px">
+    <h4>Organizers</h4>
+      <ul style='list-style-type: none;'>
+        <li style='display: flex'>
+          <h4>{{groupAPI.users[0].email}}
+            
+          <span style="font-weight: normal; font-style: normal">{{groupAPI.users.length > 1 ? ' and ' : ''}}</span>
+
+          {{groupAPI.users.length < 2 
+            ? '' 
+            : (groupAPI.users.length == 2 
+                ? (groupAPI.users.length-1) + ' other' 
+                : (groupAPI.users.length-1) + ' others')}}
+            </h4>
+        </li>
+      </ul>
+    <h4>Members ( {{groupAPI.users.length}} )</h4>
+      <ul style='list-style-type: none;'>
+        <li *ngFor="let member of groupAPI.users; let i = index">
+          <ng-template [ngIf]="i<15">
+            {{member.email}}
+          </ng-template>
+        </li>
+      </ul>
+  </div>
+</div>
+
+<h4>Find us also at</h4>
+
+<h4>Related topics</h4>
+
+<hr>
+
+<h3>Find more events in {{groupAPI.interests[0]}}</h3>
+

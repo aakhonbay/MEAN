@@ -1,0 +1,27 @@
+*{
+    font-family: Google Sans,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+}
+
+.selected{
+    background: red
+}
+
+.hover:hover{
+    background-color: #ddd;
+}
+
+.elipses:hover{
+    background-color: #f1f3f4;
+}
+
+.popup {
+    transition: width 2s, height 4s;
+    /* https://www.w3schools.com/css/css3_transitions.asp */
+}
+.added{
+    background-color: lightblue;
+    visibility: show;
+}
+.updated{
+    background-color: lightblue;
+}

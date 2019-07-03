@@ -1,0 +1,203 @@
+<div 
+  style="
+    display:flex;
+    margin-bottom: 15px;
+    ">
+    <ng-container *ngIf="!addForm">
+      <div class="hover"
+      (click)="addFormToggle()" 
+      style="
+        padding:20px;
+        display:flex; 
+        border-radius: 20px;
+        margin: 0px 16px;
+        cursor:pointer;">
+        <span><a
+          style="
+            cursor: context-menu;
+            text-decoration: none;
+            margin: 0px 10px;
+            color: #4285f4;
+          ">+</a></span>
+        <div>Add a task</div>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="hideAddForm">
+      <div class="hover"
+      (click)="hideAdd()" 
+      style="
+        padding:20px;
+        display:flex; 
+        border-radius: 20px;
+        margin: 0px 16px;
+        cursor:pointer;">
+        <span><a
+          style="
+            cursor: context-menu;
+            text-decoration: none;
+            margin: 0px 10px;
+            color: #4285f4;
+          ">-</a></span>
+        <div>Hide add form.</div>
+      </div>
+    </ng-container>
+    <div class="elipses"
+      style="border-radius: 50%;
+      width:40px;
+      height:auto;
+
+      ">
+        <img width="20px" height="20px" src="https://static.thenounproject.com/png/100441-200.png" alt=""
+        style="
+          padding: 17px 0 0 10px;
+        ">
+    </div>
+  </div>
+
+<ng-container *ngIf="addForm">
+  <app-create-task (taskAdded)='addTask($event)'></app-create-task>
+</ng-container>
+
+<button (click)="getAllTasks()">{{ !allTasks ? 'Show all tasks' : 'Hide all tasks' }}</button>
+<ng-container *ngIf="allTasks">
+  <br><br>
+  <button (click)="reverseTasks()" >{{ reverse ? 'Sort ascending' : 'Sort descending' }}</button>
+  <p *ngIf="list[list.length -1].style" [class.added]="list[list.length -1].style">
+    You just added: {{ list[list.length -1].title}}
+  </p>
+
+  <div>
+      <ul >
+        <li *ngFor="let task of list; let i = index"
+          style="
+          list-style-type: none;
+        ">
+          <div style="display:flex">
+            <div class="form-group" style="padding:16px">
+              <input 
+              (click)="completedToggle(task._id, $event, i)" 
+              style="padding: 10px 0 10px 0"
+              type="checkbox" 
+              name="completed" 
+              autocomplete="off" 
+              [checked]="task.completed"
+              />
+            </div>  
+            <div
+              (click)="hovering(i)"
+              [class.added]="task.style"
+              [class.updated]="task.style"
+              style="
+                display:flex;
+                border-bottom:2px solid #78788c;
+              ">
+              <p>{{ reverse ? list.length - i : i+1 }}) {{task.title}} - {{task.description}}</p>
+              <span style="margin: 16px; cursor:pointer;" (click)="deleteTask(task._id)">X</span>
+              <span 
+                style="margin: 16px; cursor:pointer;" (click)="editTask(task._id, i)"
+                
+                >
+                <img width="20px" height="20px" src="http://clipart-library.com/images/kiKBe9g4T.png" alt="edit"></span>
+                <a [routerLink]="task._id">{{task._id}}</a>
+                <a routerLink="5d128b28a277116def08b69b">Fake id.</a>
+            </div>
+          </div>
+            <div *ngIf=" selectedTask == task._id ">
+              <form [formGroup]="form" (submit)="onUpdateSubmit(task._id)">
+                  <h4>{{task._id}}</h4>
+                  <!-- Title Input -->
+                  <div class="form-group">
+                    <label for="title">Title</label>
+                    
+                      <input type="text" name="title" autocomplete="off" placeholder="*Username" formControlName="title" value="{{task.title}}"
+                      />
+                  </div>
+              
+                  <div class="form-group">
+                      <label for="description">Description</label>
+                      
+                        <input type="text" name="description" autocomplete="off" placeholder="*Username" formControlName="description" value="{{task.description}}"
+                        />
+                    </div>
+              
+                    <div class="form-group">
+                        <label for="completed">Completed</label>
+                        
+                          <input type="text" name="completed" autocomplete="off" placeholder="*Username" formControlName="completed" value="{{task.completed}}"
+                          />
+                        </div>  
+                  <!-- Submit Input -->
+                  <div style="display:flex">
+                    <input style="margin: 16px; cursor:pointer;" type="submit" value="Submit" />
+                    <button style="margin: 16px; cursor:pointer;" (click)="selectedTask = null" >Cancel</button>         
+                  </div>
+                </form>
+              </div>
+        </li>
+      </ul>
+  </div>
+</ng-container>
+
+<!-- 105 -->
+
+<!-- (keyup)="getTaskById($event)"  -->
+<!-- <input 
+  type="text" style="border: 1px solid black" #selectedId
+  #searchBox (keyup)="search(searchBox.value)"
+>
+{{tasks$ | async | json }}
+<ul class="search-result">
+  <li *ngFor="let hero of tasks$ | async" >
+    <a routerLink="/detail/{{hero.id}}">
+      what
+      {{hero | json}}
+    </a>
+  </li>
+</ul> -->
+
+<!-- <button >Get task by id.</button> -->
+
+
+
+<ng-container *ngIf="thirdTask">
+    <div>
+      <li>
+          {{thirdTask.tasks.title}} - {{thirdTask.tasks.description}}
+      </li>
+    </div>
+</ng-container>
+
+<!-- 115 -->
+
+<ng-template #missingMessage>
+    <h2 style="padding: 20px 0 0 30px;">Too few tasks...</h2>
+</ng-template>
+
+
+<div *ngIf="list[2]; else missingMessage" style="margin-bottom: 30px">
+  <div style="padding: 20px 0 0 30px;"> 
+    <h2>Task three:</h2>
+  </div>  
+  <li>
+      {{list[2].title}} - {{list[2].description}}
+  </li>
+</div>
+
+<!-- <div style="padding-top: 20px;">
+  <a *ngFor="let section of sections; let i = index"
+  style="padding-left: 20px;"
+  >
+    <span 
+      (click)="onSelect(section, i)"
+      class="btn btn-primary">{{section.title}}</span>
+  </a>
+</div>
+    
+<app-objectives
+  *ngIf="selectedSection; else infoText"
+  [obj]="selectedSection"
+  (addedObjective)="pushObjective($event, i)"></app-objectives>
+<ng-template #infoText>
+  <p style="padding: 20px 0 0 30px;">Please select a section...</p>
+</ng-template> -->

@@ -31,7 +31,7 @@ const routes: Routes = [
   {
     path: appRoutesNames.project1,
     loadChildren: () => import('./project1/project1.module').then(mod => mod.Project1Module),
-    data: { preload: true },
+    // data: { preload: true },
     canActivate: [AuthGuard]
   },
 ];

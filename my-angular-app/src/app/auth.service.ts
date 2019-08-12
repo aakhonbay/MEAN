@@ -25,6 +25,10 @@ export class AuthService {
     return !!localStorage.getItem('token')
   }
 
+  logout(){
+    localStorage.removeItem('token')
+  }
+
   getToken(){
     return localStorage.getItem('token')
   }
@@ -33,5 +37,4 @@ export class AuthService {
     localStorage.removeItem('token')
     this.router.navigate(['/login'])
   }
-            
 }

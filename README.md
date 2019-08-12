@@ -1,4 +1,9 @@
 # MEAN
+## Serving this project
+1. cd to root in terminal
+2. Enter npm install
+3. Enter nodemon resftultaskapi
+
 ## This is a MEAN project
 1. Modularization
 2. MVC

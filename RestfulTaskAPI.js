@@ -18,16 +18,17 @@ app.use(session({
 app.use(flash())
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
-app.use(express.static( __dirname + '/my-angular-app/dist/my-angular-app' ));
-// app.use(express.static(__dirname + '/client/dist/'));
+// app.use(express.static( __dirname + '/my-angular-app/dist/my-angular-app' ));
+app.use(express.static( __dirname + '/client/dist/my-angular-app' ));
 
 app.use('/api/tasks', angular);
 app.use('/api/groups', groups);
 app.use('/api/user', user);
 
 app.get('*', (req, res) => {
-  // console.log("APP.GET *:",__dirname + '/my-angular-app/dist/my-angular-app/index.html')
-  res.sendFile(__dirname + '/my-angular-app/dist/my-angular-app/index.html');
+  // res.sendFile(__dirname + '/my-angular-app/dist/my-angular-app/index.html');
+  res.sendFile(__dirname + '/client/dist/my-angular-app');
+  
 })
 
 // require('./server/config/routes')(app);
